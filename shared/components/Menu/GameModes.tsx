@@ -1,19 +1,21 @@
 'use client';
-import { Fragment } from 'react';
+import { useEffect } from 'react';
 import useKanaStore from '@/features/Kana/store/useKanaStore';
 import useKanjiStore from '@/features/Kanji/store/useKanjiStore';
 import useVocabStore from '@/features/Vocabulary/store/useVocabStore';
-import { MousePointerClick, Keyboard, CircleCheck, Circle } from 'lucide-react';
+import { MousePointerClick, Keyboard, Play, ArrowLeft } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/shared/hooks/useAudio';
-import { usePathname } from 'next/navigation';
 import { useShallow } from 'zustand/react/shallow';
-import { removeLocaleFromPath } from '@/shared/lib/pathUtils';
+import { Link } from '@/core/i18n/routing';
 
-const GameModes = () => {
-  const pathname = usePathname();
-  const pathWithoutLocale = removeLocaleFromPath(pathname);
+interface GameModesProps {
+  isOpen: boolean;
+  onClose: () => void;
+  currentDojo: string;
+}
 
+const GameModes = ({ isOpen, onClose, currentDojo }: GameModesProps) => {
   const { playClick } = useClick();
 
   const { selectedGameModeKana, setSelectedGameModeKana } = useKanaStore(
@@ -30,103 +32,222 @@ const GameModes = () => {
     }))
   );
 
-  const selectedGameModeVocab = useVocabStore(
-    useShallow(state => state.selectedGameModeVocab)
+  const { selectedGameModeVocab, setSelectedGameModeVocab } = useVocabStore(
+    useShallow(state => ({
+      selectedGameModeVocab: state.selectedGameModeVocab,
+      setSelectedGameModeVocab: state.setSelectedGameModeVocab
+    }))
   );
 
   const selectedGameMode =
-    pathWithoutLocale === '/kana'
+    currentDojo === 'kana'
       ? selectedGameModeKana
-      : pathWithoutLocale === '/kanji'
+      : currentDojo === 'kanji'
       ? selectedGameModeKanji
-      : pathWithoutLocale === '/vocabulary'
+      : currentDojo === 'vocabulary'
       ? selectedGameModeVocab
       : '';
 
-  const setSelectedGameModeVocab = useVocabStore(
-    useShallow(state => state.setSelectedGameModeVocab)
-  );
-
   const setSelectedGameMode =
-    pathWithoutLocale === '/kana'
+    currentDojo === 'kana'
       ? setSelectedGameModeKana
-      : pathWithoutLocale === '/kanji'
+      : currentDojo === 'kanji'
       ? setSelectedGameModeKanji
-      : pathWithoutLocale === '/vocabulary'
+      : currentDojo === 'vocabulary'
       ? setSelectedGameModeVocab
       : () => {};
 
-  // const gameModes = ['Pick', 'Reverse-Pick', 'Input', 'Reverse-Input'];
-  const gameModes = ['Pick', 'Type'];
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose]);
+
+  const gameModes = [
+    {
+      id: 'Pick',
+      title: 'Pick',
+      description: 'Pick the correct answer from multiple options',
+      icon: MousePointerClick
+    },
+    {
+      id: 'Type',
+      title: 'Type',
+      description: 'Type the correct answer',
+      icon: Keyboard
+    }
+  ];
+
+  const dojoLabel =
+    currentDojo === 'kana'
+      ? 'Kana'
+      : currentDojo === 'kanji'
+      ? 'Kanji'
+      : 'Vocabulary';
+
+  if (!isOpen) return null;
 
   return (
-    <div className='flex rounded-2xl bg-[var(--card-color)]  border-[var(--border-color)] px-4 py-3 gap-4 flex-col md:flex-row'>
-      {gameModes.map(gameMode => {
-        const isSelected = gameMode === selectedGameMode;
+    <div className='fixed inset-0 z-50 bg-[var(--background-color)]'>
+      <div className='min-h-[100dvh] flex flex-col items-center justify-center p-4'>
+        <div className='max-w-lg w-full space-y-4'>
+          {/* Header */}
+          <div className='text-center space-y-3'>
+            <Play size={56} className='mx-auto text-[var(--main-color)]' />
+            <h1 className='text-2xl font-bold text-[var(--secondary-color)]'>
+              {dojoLabel} Training
+            </h1>
+            <p className='text-[var(--muted-color)]'>
+              Choose your training mode
+            </p>
+          </div>
 
-        return (
-          <button
-            key={gameMode}
-            onClick={() => {
-              playClick();
-              setSelectedGameMode(gameMode);
-            }}
-            className={clsx(
-              'relative flex-1 px-4 py-3 rounded-2xl transition-colors duration-0 hover:cursor-pointer',
-              'flex flex-col items-center justify-center gap-2',
-              isSelected
-                ? 'bg-[var(--main-color)]/80 text-[var(--background-color)] shadow-sm border-b-4 border-[var(--main-color-accent)]'
-                : 'text-[var(--main-color)] hover:bg-[var(--border-color)]/50'
-            )}
-          >
-            <div className='flex items-center gap-2'>
-              <span className='text-lg font-medium'>{gameMode}</span>
-              {gameMode.toLowerCase() === 'pick' && (
-                <MousePointerClick
-                  size={20}
+          {/* Game Mode Cards */}
+          <div className='space-y-3'>
+            {gameModes.map(mode => {
+              const isSelected = mode.id === selectedGameMode;
+              const Icon = mode.icon;
+
+              return (
+                <button
+                  key={mode.id}
+                  onClick={() => {
+                    playClick();
+                    setSelectedGameMode(mode.id);
+                  }}
                   className={clsx(
+                    'w-full p-5 rounded-xl text-left transition-all hover:cursor-pointer',
+                    'border-2 flex items-center gap-4',
                     isSelected
-                      ? 'text-[var(--background-color)]'
-                      : 'text-[var(--main-color)] motion-safe:animate-pulse'
+                      ? 'border-[var(--main-color)] bg-[var(--main-color)]/10'
+                      : 'border-[var(--border-color)] bg-[var(--card-color)] hover:border-[var(--main-color)]/50'
                   )}
-                />
+                >
+                  {/* Icon */}
+                  <div
+                    className={clsx(
+                      'w-12 h-12 rounded-xl flex items-center justify-center shrink-0',
+                      isSelected
+                        ? 'bg-[var(--main-color)] text-white'
+                        : 'bg-[var(--border-color)] text-[var(--muted-color)]'
+                    )}
+                  >
+                    <Icon size={24} />
+                  </div>
+
+                  {/* Content */}
+                  <div className='flex-1 min-w-0'>
+                    <h3
+                      className={clsx(
+                        'text-lg font-semibold',
+                        isSelected
+                          ? 'text-[var(--main-color)]'
+                          : 'text-[var(--secondary-color)]'
+                      )}
+                    >
+                      {mode.title}
+                    </h3>
+                    <p className='text-sm text-[var(--muted-color)] mt-0.5'>
+                      {mode.description}
+                    </p>
+                  </div>
+
+                  {/* Selection indicator */}
+                  <div
+                    className={clsx(
+                      'w-5 h-5 rounded-full border-2 shrink-0 flex items-center justify-center',
+                      isSelected
+                        ? 'border-[var(--main-color)] bg-[var(--main-color)]'
+                        : 'border-[var(--border-color)]'
+                    )}
+                  >
+                    {isSelected && (
+                      <svg
+                        className='w-3 h-3 text-white'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={3}
+                          d='M5 13l4 4L19 7'
+                        />
+                      </svg>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Action Buttons */}
+          <div className='flex flex-row items-center justify-center gap-2 md:gap-4 w-full max-w-4xl mx-auto'>
+            <button
+              className={clsx(
+                'w-1/2 h-12 px-2 sm:px-6 flex flex-row justify-center items-center gap-2',
+                'bg-[var(--secondary-color)] text-[var(--background-color)]',
+                'rounded-2xl transition-colors duration-200',
+                'border-b-6 border-[var(--secondary-color-accent)] shadow-sm',
+                'hover:cursor-pointer'
               )}
-              {gameMode.toLowerCase() === 'anti-pick' && (
-                <MousePointerClick
+              onClick={() => {
+                playClick();
+                onClose();
+              }}
+            >
+              <ArrowLeft size={20} />
+              <span className='whitespace-nowrap'>Back</span>
+            </button>
+
+            {/* Start Training Button */}
+            <Link
+              href={`/${currentDojo}/train`}
+              className='w-1/2'
+              onClick={e => {
+                if (!selectedGameMode) {
+                  e.preventDefault();
+                  return;
+                }
+                playClick();
+              }}
+            >
+              <button
+                disabled={!selectedGameMode}
+                className={clsx(
+                  'w-full h-12 px-2 sm:px-6 flex flex-row justify-center items-center gap-2',
+                  'rounded-2xl transition-colors duration-200',
+                  'font-medium border-b-6 shadow-sm',
+                  'hover:cursor-pointer',
+                  selectedGameMode
+                    ? 'bg-[var(--main-color)] text-[var(--background-color)] border-[var(--main-color-accent)]'
+                    : 'bg-[var(--card-color)] text-[var(--border-color)] cursor-not-allowed'
+                )}
+              >
+                <span className='whitespace-nowrap'>Start Training</span>
+                <Play
+                  className={clsx(selectedGameMode && 'fill-current')}
                   size={20}
-                  className={clsx(
-                    'scale-x-[-1]',
-                    isSelected
-                      ? 'text-[var(--background-color)]'
-                      : 'text-[var(--main-color)] motion-safe:animate-pulse'
-                  )}
                 />
-              )}
-              {gameMode.toLowerCase() === 'type' && (
-                <Keyboard
-                  size={20}
-                  className={clsx(
-                    isSelected
-                      ? 'text-[var(--background-color)]'
-                      : 'text-[var(--main-color)] motion-safe:animate-pulse'
-                  )}
-                />
-              )}
-              {gameMode.toLowerCase() === 'anti-type' && (
-                <Keyboard
-                  size={20}
-                  className={clsx(
-                    'scale-y-[-1]',
-                    isSelected
-                      ? 'text-[var(--background-color)]'
-                      : 'text-[var(--main-color)] motion-safe:animate-pulse'
-                  )}
-                />
-              )}
-            </div>
-          </button>
-        );
-      })}
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

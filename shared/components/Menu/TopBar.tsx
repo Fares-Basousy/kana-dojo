@@ -9,7 +9,7 @@ import usePreferencesStore from '@/features/Preferences/store/usePreferencesStor
 import { useClick } from '@/shared/hooks/useAudio';
 import { Play, Timer } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import GameModesModal from '@/shared/components/Menu/GameModesModal';
+import GameModes from '@/shared/components/Menu/GameModes';
 
 interface ITopBarProps {
   currentDojo: string;
@@ -194,7 +194,7 @@ const TopBar: React.FC<ITopBarProps> = ({ currentDojo }: ITopBarProps) => {
               {/* Timed Challenge Button */}
               {showTimedChallenge && (
                 <Link
-                  href={`${currentDojo}/timed-challenge`}
+                  href={`/${currentDojo}/timed-challenge`}
                   className='flex-1 max-w-sm'
                 >
                   <button
@@ -240,8 +240,8 @@ const TopBar: React.FC<ITopBarProps> = ({ currentDojo }: ITopBarProps) => {
         )}
       </AnimatePresence>
 
-      {/* Game Modes Modal */}
-      <GameModesModal
+      {/* Game Modes Interstitial */}
+      <GameModes
         isOpen={showGameModesModal}
         onClose={() => setShowGameModesModal(false)}
         currentDojo={currentDojo}
