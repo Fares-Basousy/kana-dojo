@@ -245,11 +245,11 @@ function GameHeader({
         <button
           onClick={onCancel}
           className={clsx(
-            'p-2 rounded-lg border-2 border-red-500/50 hover:bg-red-500/10 transition-colors'
+            'p-2 rounded-lg border-2 border-red-500/50 hover:bg-red-500/10 transition-colors cursor-pointer'
           )}
           title='Cancel challenge'
         >
-          <X size={20} className='text-red-500' />
+          <X size={20} className='text-red-500 ' />
         </button>
       </div>
     </div>
