@@ -109,6 +109,15 @@ const MobileBottomBar = () => {
         {socialLinks.map((link, idx) => {
           const Icon = link.icon as LucideIcon;
           const isDonate = link.special === 'donate';
+          const isPatreon =
+            link.type === 'fontawesome' && link.icon === faPatreon;
+          const isKofi = link.type === 'lucide' && link.icon === Coffee;
+
+          const pulseClasses = clsx(
+            (isKofi || isPatreon) && 'motion-safe:animate-pulse',
+            isKofi && '[animation-delay:0ms]',
+            isPatreon && '[animation-delay:750ms]'
+          );
 
           return (
             <React.Fragment key={idx}>
@@ -116,7 +125,11 @@ const MobileBottomBar = () => {
                 <FontAwesomeIcon
                   icon={link.icon as IconDefinition}
                   size="sm"
-                  className={baseIconClasses}
+                  className={clsx(
+                    baseIconClasses,
+                    pulseClasses,
+                    isPatreon && 'text-blue-500 hover:text-blue-400'
+                  )}
                   onClick={() => handleClick(link.url)}
                 />
               ) : (
@@ -124,6 +137,7 @@ const MobileBottomBar = () => {
                   size={16}
                   className={clsx(
                     baseIconClasses,
+                    pulseClasses,
                     isDonate &&
                       'motion-safe:animate-pulse text-red-500 fill-current hover:text-red-500'
                   )}
@@ -131,7 +145,7 @@ const MobileBottomBar = () => {
                 />
               )}
               {idx === 1 && socialLinks.length > 2 && (
-                <span className="text-xs text-[var(--secondary-color)] select-none">
+                <span className="text-sm text-[var(--secondary-color)] select-none">
                   ~
                 </span>
               )}
@@ -164,7 +178,11 @@ const MobileBottomBar = () => {
               ) : (
                 content
               )}
-              {idx < infoItems.length - 1 && <span>~</span>}
+              {idx < infoItems.length - 1 && (
+                <span className="text-sm text-[var(--secondary-color)] select-none">
+                  ~
+                </span>
+              )}
             </React.Fragment>
           );
         })}
