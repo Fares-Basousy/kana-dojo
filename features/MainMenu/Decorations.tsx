@@ -4,8 +4,8 @@ import themeSets from '@/features/Preferences/data/themes';
 import { useClick } from '@/shared/hooks/useAudio';
 import clsx from 'clsx';
 
-// Explosion animation styles - only injected once when interactive
-const explosionKeyframes = `
+// Animation keyframes - injected once when needed
+const animationKeyframes = `
 @keyframes explode {
   0% {
     transform: scale(1);
@@ -27,6 +27,15 @@ const explosionKeyframes = `
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
   }
 }
 `;
@@ -56,12 +65,22 @@ const GRID_CONFIG = {
   mobile: { cols: 10, cellSize: 36, gap: 2 } // grid-cols-10
 };
 
-// Scatter animation configuration - for random pulsing effect
+// Scatter animation configuration - base layer of random pulsing
 const SCATTER_CONFIG = {
-  frequency: 6000, // Trigger new scatter burst every 6 seconds
-  scatterCount: 70, // Number of random characters to animate (~9% of desktop grid)
-  pulseDuration: 5000, // Duration of each pulse animation in ms
-  overlap: true // Allow slight overlap between bursts for continuous movement
+  frequency: 5000, // Trigger new scatter burst every 5 seconds
+  scatterCount: 90, // Number of random characters to animate (~11% of desktop grid)
+  pulseDuration: 3500, // Duration of each pulse animation in ms (faster for more visibility)
+  minOpacity: 0.25, // More pronounced pulse (0.25-1.0 instead of 0.5-1.0)
+  overlap: true // Allow overlap between bursts for continuous movement
+};
+
+// Wave animation configuration - traveling accent layer
+const WAVE_CONFIG = {
+  frequency: 12000, // Trigger new wave every 12 seconds
+  waveWidth: 5, // Number of columns in the wave (4-5 columns wide)
+  waveDuration: 3000, // How long the wave takes to travel across grid
+  waveInterval: 50, // Update wave position every 50ms for smooth travel
+  boostCount: 40 // Additional characters animated in wave columns
 };
 
 // Calculate how many characters to render based on viewport
@@ -289,7 +308,6 @@ const StaticChar = memo(({ style, isAnimating = false }: StaticCharProps) => (
   <span
     className={clsx(
       'inline-flex items-center justify-center text-4xl',
-      isAnimating && 'motion-safe:animate-pulse',
       style.fontClass
     )}
     aria-hidden='true'
@@ -297,9 +315,11 @@ const StaticChar = memo(({ style, isAnimating = false }: StaticCharProps) => (
       color: style.color,
       contentVisibility: 'auto',
       containIntrinsicSize: '36px',
-      // Custom animation duration for slower, organic breathing effect
+      // Smooth transition when animation starts/stops
+      transition: 'opacity 0.8s ease-in-out',
+      // Custom breathe animation with enhanced visibility
       ...(isAnimating && {
-        animationDuration: `${SCATTER_CONFIG.pulseDuration}ms`
+        animation: `breathe ${SCATTER_CONFIG.pulseDuration}ms ease-in-out infinite`
       })
     }}
   >
@@ -329,6 +349,7 @@ const Decorations = ({
   const [animatingIndices, setAnimatingIndices] = useState<Set<number>>(
     new Set()
   );
+  const [waveColumn, setWaveColumn] = useState<number>(-1); // Current wave column (-1 = no wave)
   const { playClick } = useClick();
 
   // Store latest playClick in ref to keep handleExplode stable
@@ -378,17 +399,15 @@ const Decorations = ({
     };
   }, [visibleCount, forceShow]);
 
-  // Inject explosion keyframes once when interactive mode is enabled
+  // Inject animation keyframes once when component mounts
   useEffect(() => {
-    if (!interactive) return;
-
-    const styleId = 'decorations-explosion-keyframes';
+    const styleId = 'decorations-animation-keyframes';
     // Only inject if not already present
     if (document.getElementById(styleId)) return;
 
     const styleElement = document.createElement('style');
     styleElement.id = styleId;
-    styleElement.textContent = explosionKeyframes;
+    styleElement.textContent = animationKeyframes;
     document.head.appendChild(styleElement);
 
     return () => {
@@ -398,7 +417,7 @@ const Decorations = ({
         existingStyle.remove();
       }
     };
-  }, [interactive]);
+  }, []);
 
   // Random scatter burst animation - only in static (non-interactive) mode
   useEffect(() => {
@@ -436,6 +455,67 @@ const Decorations = ({
     };
   }, [interactive, styles.length]);
 
+  // Traveling wave animation - accent layer that sweeps across grid
+  useEffect(() => {
+    // Only run wave in static mode
+    if (interactive || styles.length === 0) return;
+
+    // Determine columns based on device (28 desktop, 10 mobile)
+    const cols = visibleCount > 400 ? GRID_CONFIG.desktop.cols : GRID_CONFIG.mobile.cols;
+
+    // Trigger waves periodically
+    const waveTimer = setInterval(() => {
+      let currentCol = 0;
+      const steps = cols + WAVE_CONFIG.waveWidth;
+      const stepDuration = WAVE_CONFIG.waveDuration / steps;
+
+      // Animate wave traveling left to right
+      const waveInterval = setInterval(() => {
+        setWaveColumn(currentCol);
+        currentCol++;
+
+        if (currentCol >= cols + WAVE_CONFIG.waveWidth) {
+          clearInterval(waveInterval);
+          setWaveColumn(-1); // Reset wave
+        }
+      }, stepDuration);
+    }, WAVE_CONFIG.frequency);
+
+    return () => {
+      clearInterval(waveTimer);
+      setWaveColumn(-1);
+    };
+  }, [interactive, styles.length, visibleCount]);
+
+  // Calculate combined animating indices (scatter + wave)
+  const combinedAnimatingIndices = useMemo(() => {
+    if (interactive || styles.length === 0) return new Set<number>();
+
+    const combined = new Set(animatingIndices);
+
+    // Add wave characters if wave is active
+    if (waveColumn >= 0) {
+      const cols = visibleCount > 400 ? GRID_CONFIG.desktop.cols : GRID_CONFIG.mobile.cols;
+      const rows = Math.ceil(visibleCount / cols);
+
+      // Calculate which columns are in the wave
+      for (let col = Math.max(0, waveColumn - WAVE_CONFIG.waveWidth); col <= waveColumn; col++) {
+        if (col >= cols) continue;
+
+        // Add random characters from this column
+        for (let row = 0; row < rows; row++) {
+          const index = row * cols + col;
+          if (index < styles.length && Math.random() < 0.7) {
+            // 70% chance to animate chars in wave
+            combined.add(index);
+          }
+        }
+      }
+    }
+
+    return combined;
+  }, [animatingIndices, waveColumn, interactive, styles.length, visibleCount]);
+
   // Memoize grid content - now using separate components for interactive vs static
   const gridContent = useMemo(() => {
     if (styles.length === 0) return null;
@@ -447,16 +527,16 @@ const Decorations = ({
         <InteractiveChar key={index} style={style} onExplode={handleExplode} />
       ));
     } else {
-      // Static mode: random scatter animation - only selected chars animate
+      // Static mode: random scatter + wave animation - only selected chars animate
       return styles.map((style, index) => (
         <StaticChar
           key={index}
           style={style}
-          isAnimating={animatingIndices.has(index)}
+          isAnimating={combinedAnimatingIndices.has(index)}
         />
       ));
     }
-  }, [styles, interactive, handleExplode, animatingIndices]);
+  }, [styles, interactive, handleExplode, combinedAnimatingIndices]);
 
   if (styles.length === 0) return null;
 
