@@ -4,41 +4,44 @@ Welcome to the KanaDojo documentation. This index provides quick access to all p
 
 ## Getting Started
 
-| Document | Description |
-|----------|-------------|
+| Document                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- |
 | [Contributing Guide](../CONTRIBUTING.md) | How to set up the project and contribute |
-| [Troubleshooting](./TROUBLESHOOTING.md) | Common issues and solutions |
+| [Troubleshooting](./TROUBLESHOOTING.md)  | Common issues and solutions              |
 
 ## Architecture & Development
 
-| Document | Description |
-|----------|-------------|
-| [Architecture](./ARCHITECTURE.md) | Project structure, patterns, and conventions |
-| [UI Design](./UI_DESIGN.md) | Theming system, styling guidelines, and component patterns |
-| [Performance](./PERFORMANCE_OPTIMIZATIONS.md) | Dev server and build optimizations |
-| [Audio](./AUDIO_OPTIMIZATION.md) | Audio system implementation details |
+| Document                                      | Description                                                |
+| --------------------------------------------- | ---------------------------------------------------------- |
+| [Architecture](./ARCHITECTURE.md)             | Project structure, patterns, and conventions               |
+| [UI Design](./UI_DESIGN.md)                   | Theming system, styling guidelines, and component patterns |
+| [Performance](./PERFORMANCE_OPTIMIZATIONS.md) | Dev server and build optimizations                         |
+| [Audio](./AUDIO_OPTIMIZATION.md)              | Audio system implementation details                        |
+| [GitHub Workflows](./GITHUB_WORKFLOWS.md)     | CI/CD pipeline documentation                               |
+| [Vercel Deployment](./VERCEL_DEPLOYMENT.md)   | Deployment process and configuration                       |
+| [i18n Scripts](./I18N_SCRIPTS.md)             | Internationalization tooling documentation                 |
 
 ## Features
 
-| Document | Description |
-|----------|-------------|
+| Document                          | Description                                             |
+| --------------------------------- | ------------------------------------------------------- |
 | [Achievements](./ACHIEVEMENTS.md) | Achievement system with 80+ badges across 12 categories |
-| [SEO](./SEO.md) | SEO implementation, metadata, and structured data |
+| [SEO](./SEO.md)                   | SEO implementation, metadata, and structured data       |
 
 ## Internationalization (i18n)
 
-| Document | Description |
-|----------|-------------|
-| [Translation Guide](./TRANSLATION_GUIDE.md) | How to translate the app UI |
-| [Adding Languages](./ADDING_LANGUAGES.md) | How to add new language support with SEO |
+| Document                                    | Description                              |
+| ------------------------------------------- | ---------------------------------------- |
+| [Translation Guide](./TRANSLATION_GUIDE.md) | How to translate the app UI              |
+| [Adding Languages](./ADDING_LANGUAGES.md)   | How to add new language support with SEO |
 
 ## Project Information
 
-| Document | Description |
-|----------|-------------|
-| [Security Policy](../SECURITY.md) | How to report vulnerabilities |
-| [Code of Conduct](../CODE_OF_CONDUCT.md) | Community guidelines |
-| [License](../LICENSE.md) | AGPL 3.0 License |
+| Document                                  | Description                   |
+| ----------------------------------------- | ----------------------------- |
+| [Security Policy](../.github/SECURITY.md) | How to report vulnerabilities |
+| [Code of Conduct](../CODE_OF_CONDUCT.md)  | Community guidelines          |
+| [License](../LICENSE.md)                  | AGPL 3.0 License              |
 
 ## README Translations
 
