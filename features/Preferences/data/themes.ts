@@ -242,6 +242,10 @@ const baseThemeSets: BaseThemeGroup[] = [
     icon: Moon,
     themes: [
       {
+        id: 'samurai-steel',
+        backgroundColor: 'oklch(18.0% 0.022 250.0 / 1)',
+        mainColor: 'oklch(80.0% 0.055 240.0 / 1)',
+        secondaryColor: 'oklch(65.0% 0.170 15.0 / 1)'},{
         id: 'fuji-sunrise',
         backgroundColor: 'oklch(23.0% 0.048 40.0 / 1)',
         mainColor: 'oklch(85.0% 0.155 55.0 / 1)',
