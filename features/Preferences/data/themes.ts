@@ -250,7 +250,7 @@ const baseThemeSets: BaseThemeGroup[] = [
         id: 'peach-mochi',
         backgroundColor: 'oklch(96.0% 0.020 25.0 / 1)',
         mainColor: 'oklch(68.0% 0.165 15.0 / 1)',
-        secondaryColor: 'oklch(78.0% 0.105 85.0 / 1)'
+        secondaryColor: 'oklch(78.0% 0.105 85.0 / 1)',
       },
       {
         id: 'dark',
@@ -328,18 +328,18 @@ const baseThemeSets: BaseThemeGroup[] = [
     icon: Moon,
     isLight: false,
     themes: [
-		{
-		  id: 'fuji-shadow',
-		  backgroundColor: 'oklch(15.0% 0.015 250.0 / 1)',
-		  mainColor: 'oklch(78.0% 0.035 230.0 / 1)',
-		  secondaryColor: 'oklch(65.0% 0.105 300.0 / 1)'
-		},
-		{
-		  id: 'shrine-stone',
-		  backgroundColor: 'oklch(19.0% 0.015 260.0 / 1)',
-		  mainColor: 'oklch(72.0% 0.155 35.0 / 1)',
-		  secondaryColor: 'oklch(58.0% 0.035 240.0 / 1)'
-		},
+      {
+        id: 'fuji-shadow',
+        backgroundColor: 'oklch(15.0% 0.015 250.0 / 1)',
+        mainColor: 'oklch(78.0% 0.035 230.0 / 1)',
+        secondaryColor: 'oklch(65.0% 0.105 300.0 / 1)',
+      },
+      {
+        id: 'shrine-stone',
+        backgroundColor: 'oklch(19.0% 0.015 260.0 / 1)',
+        mainColor: 'oklch(72.0% 0.155 35.0 / 1)',
+        secondaryColor: 'oklch(58.0% 0.035 240.0 / 1)',
+      },
       {
         id: 'temple-mist',
         backgroundColor: 'oklch(21.0% 0.020 200.0 / 1)',
@@ -374,7 +374,7 @@ const baseThemeSets: BaseThemeGroup[] = [
         id: 'sea-glass',
         backgroundColor: 'oklch(96.0% 0.015 210.0 / 1)',
         mainColor: 'oklch(60.0% 0.135 200.0 / 1)',
-        secondaryColor: 'oklch(78.0% 0.065 100.0 / 1)'
+        secondaryColor: 'oklch(78.0% 0.065 100.0 / 1)',
       },
       {
         id: 'tsuyu-drizzle',
@@ -1323,18 +1323,24 @@ const baseThemeSets: BaseThemeGroup[] = [
         mainColor: 'oklch(88.0% 0.055 230.0 / 1)',
         secondaryColor: 'oklch(70.0% 0.145 210.0 / 1)',
       },
-	{
-  	  id: 'sakura-latte',
+      {
+        id: 'sakura-latte',
         backgroundColor: 'oklch(95.0% 0.020 15.0 / 1)',
-  	  mainColor: 'oklch(70.0% 0.155 350.0 / 1)',
-  	  secondaryColor: 'oklch(82.0% 0.090 95.0 / 1)'
-	},
-	{
-  	  id: 'plum-ink',
-    	  backgroundColor: 'oklch(16.0% 0.030 280.0 / 1)',
-  	  mainColor: 'oklch(72.0% 0.145 330.0 / 1)',
-  	  secondaryColor: 'oklch(60.0% 0.075 260.0 / 1)'
-	},
+        mainColor: 'oklch(70.0% 0.155 350.0 / 1)',
+        secondaryColor: 'oklch(82.0% 0.090 95.0 / 1)',
+      },
+      {
+        id: 'plum-ink',
+        backgroundColor: 'oklch(16.0% 0.030 280.0 / 1)',
+        mainColor: 'oklch(72.0% 0.145 330.0 / 1)',
+        secondaryColor: 'oklch(60.0% 0.075 260.0 / 1)',
+      },
+      {
+        id: 'tangerine-fizz',
+        backgroundColor: 'oklch(94.0% 0.015 80.0 / 1)',
+        mainColor: 'oklch(70.0% 0.195 55.0 / 1)',
+        secondaryColor: 'oklch(80.0% 0.125 95.0 / 1)',
+      },
     ],
   },
   {
