@@ -599,7 +599,7 @@
     "explanation": "Use に行く for purpose. (Pattern set 4)",
     "id": 75,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "wrong": "日本語をわかります。",
@@ -647,7 +647,7 @@
     "explanation": "Do not stack ます and です in one predicate. (Pattern set 5)",
     "id": 81,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "wrong": "日本語が好きをです。",
@@ -655,14 +655,14 @@
     "explanation": "好き takes が, not を. (Pattern set 5)",
     "id": 82,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "wrong": "静かい部屋",
     "correct": "静かな部屋",
     "explanation": "な-adjectives require な before nouns. (Pattern set 5)",
     "id": 83,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
