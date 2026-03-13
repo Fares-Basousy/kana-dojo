@@ -319,7 +319,7 @@
     "note": "Characteristic Nagoya intensifier. (Set 2)",
     "id": 32,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "dialect": "〜だがや",
@@ -329,7 +329,7 @@
     "note": "Strong Nagoya marker. (Set 2)",
     "id": 33,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "dialect": "ぶち",
@@ -348,7 +348,7 @@
     "region": "Hiroshima",
     "note": "Common causal ending. (Set 2)",
     "id": 35,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
