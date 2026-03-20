@@ -369,6 +369,7 @@ const VocabInputGame = ({
         feedbackContent={feedbackText}
         buttonRef={buttonRef}
         hideRetry
+        hideAnswerOnCorrect
       />
 
       <div className='h-32' />

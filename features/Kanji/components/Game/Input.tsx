@@ -408,6 +408,7 @@ const KanjiInputGame = ({
         feedbackContent={feedbackText}
         buttonRef={buttonRef}
         hideRetry
+        hideAnswerOnCorrect
       />
 
       <div className='h-32' />

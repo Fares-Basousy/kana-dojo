@@ -23,6 +23,8 @@ interface GameBottomBarProps {
   className?: string;
   /** When true, shows "Check" button instead of "Try Again" on wrong answers (for Input/Type mode) */
   hideRetry?: boolean;
+  /** When true, hides the answer content when state is 'correct' (shows only "Nicely done!") */
+  hideAnswerOnCorrect?: boolean;
 }
 
 export const GameBottomBar = ({
@@ -36,6 +38,7 @@ export const GameBottomBar = ({
   buttonRef,
   className,
   hideRetry = false,
+  hideAnswerOnCorrect = false,
 }: GameBottomBarProps) => {
   const isCorrect = state === 'correct';
   const isWrong = state === 'wrong';
@@ -90,7 +93,7 @@ export const GameBottomBar = ({
               {displayTitle}
             </span>
             <span className='text-sm text-(--main-color) sm:text-lg'>
-              {feedbackContent}
+              {hideAnswerOnCorrect && isCorrect ? '' : feedbackContent}
             </span>
           </div>
         </div>

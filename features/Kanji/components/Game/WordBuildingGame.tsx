@@ -492,6 +492,7 @@ const KanjiWordBuildingGame = ({
         canCheck={canCheck}
         feedbackContent={questionData.correctAnswer}
         buttonRef={buttonRef}
+        hideAnswerOnCorrect
       />
 
       {/* Spacer */}

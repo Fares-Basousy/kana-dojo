@@ -465,6 +465,7 @@ const InputGame = ({ isHidden, isReverse = false }: InputGameProps) => {
         }
         buttonRef={buttonRef}
         hideRetry
+        hideAnswerOnCorrect
       />
 
       {/* Spacer */}

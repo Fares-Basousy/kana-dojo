@@ -711,6 +711,7 @@ export default function ActiveGame<T>({
           buttonRef={buttonRef}
           actionLabel={showContinue ? 'next' : showTryAgain ? 'next' : 'check'}
           hideRetry
+          hideAnswerOnCorrect
         />
 
         {/* Spacer */}

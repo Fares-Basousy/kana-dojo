@@ -517,6 +517,7 @@ const WordBuildingGame = ({
         canCheck={canCheck}
         feedbackContent={wordData.answerChars.join('')}
         buttonRef={buttonRef}
+        hideAnswerOnCorrect
       />
 
       {/* Spacer */}
