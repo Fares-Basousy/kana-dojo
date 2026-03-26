@@ -798,7 +798,7 @@
     "note": "合意形成を重視する文化。",
     "id": 89,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "situation": "列に並ぶ時 5",
@@ -807,7 +807,7 @@
     "note": "駅・店頭では順番厳守。",
     "id": 90,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "situation": "贈り物 5",
@@ -816,7 +816,7 @@
     "note": "謙遜表現が好まれる。",
     "id": 91,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "situation": "遅刻時 5",
@@ -825,7 +825,7 @@
     "note": "先に謝罪が基本。",
     "id": 92,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "situation": "写真撮影（寺社） 5",
@@ -833,7 +833,7 @@
     "dont": "禁止場所で撮影する",
     "note": "御本尊周辺は撮影不可が多い。",
     "id": 93,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
