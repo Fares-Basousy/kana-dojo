@@ -16,7 +16,7 @@ import Stars from '@/shared/components/Game/Stars';
 import { useCrazyModeTrigger } from '@/features/CrazyMode/hooks/useCrazyModeTrigger';
 import { getGlobalAdaptiveSelector } from '@/shared/lib/adaptiveSelection';
 import { useSmartReverseMode } from '@/shared/hooks/game/useSmartReverseMode';
-import { useProgressiveDifficulty } from '@/shared/hooks/game/useProgressiveDifficulty';
+import { useAdaptiveOptionCount } from '@/shared/hooks/game/useAdaptiveOptionCount';
 import { useWordBuildingMode } from '@/shared/hooks/game/useWordBuildingMode';
 import WordBuildingGame from './WordBuildingGame';
 import useClassicSessionStore from '@/shared/store/useClassicSessionStore';
@@ -95,7 +95,7 @@ const PickGame = ({ isHidden }: PickGameProps) => {
     optionCount,
     recordCorrect: recordDifficultyCorrect,
     recordWrong: recordDifficultyWrong,
-  } = useProgressiveDifficulty({
+  } = useAdaptiveOptionCount({
     minOptions: 3,
     maxOptions: 6,
     streakPerLevel: 5,

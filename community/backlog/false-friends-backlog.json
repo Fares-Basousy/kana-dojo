@@ -519,7 +519,9 @@
     "example": "父は都内でサラリーマンをしている。",
     "id": 58,
     "issued": false,
-    "completed": true
+    "completed": true,
+    "completedBy": "23f2004090",
+    "completedPR": 10604
   },
   {
     "termA": "ペットボトル (petto botoru)",
@@ -681,7 +683,9 @@
     "example": "試合前はみんなハイテンションだった。",
     "id": 76,
     "issued": false,
-    "completed": true
+    "completed": true,
+    "completedBy": "22f3000216",
+    "completedPR": 10527
   },
   {
     "termA": "イメージ (imeeji)",

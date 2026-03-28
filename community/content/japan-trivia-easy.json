@@ -437,9 +437,8 @@
       "Bento"
     ],
     "correctIndex": 0
-  }
-],
-{
+  },
+  {
   "question": "Which Japanese island is home to the city of Sapporo? (Community variation 5)",
   "difficulty": "easy",
   "answers": [
@@ -449,4 +448,27 @@
     "Kyushu"
   ],
   "correctIndex": 1
+},
+{
+  "question": "What is the Japanese term for a traditional wooden sandal?",
+  "difficulty": "easy",
+  "answers": [
+    "Geta",
+    "Zori",
+    "Waraji",
+    "Tabi"
+  ],
+  "correctIndex": 0
+},
+  {
+  "question": "Which city is famous for the Peace Memorial Park?",
+  "difficulty": "easy",
+  "answers": [
+    "Hiroshima",
+    "Osaka",
+    "Tokyo",
+    "Fukuoka"
+  ],
+  "correctIndex": 0
 }
+]

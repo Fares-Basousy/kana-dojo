@@ -1,14 +1,14 @@
 'use client';
 import { useState, useCallback, useMemo } from 'react';
 
-interface ProgressiveTargetLengthOptions {
+interface AdaptiveTargetLengthOptions {
   minLength?: number;
   maxLength?: number;
   correctsPerLevel?: number;
   wrongsToDecrease?: number;
 }
 
-interface ProgressiveTargetLengthState {
+interface AdaptiveTargetLengthState {
   targetLength: number;
   difficultyLevel: number;
   levelStreak: number;
@@ -22,7 +22,7 @@ interface ProgressiveTargetLengthState {
  * - After N corrects, increases by 1 (up to maxLength)
  * - After M wrongs, decreases by 1 (down to minLength)
  */
-export function useProgressiveTargetLength(options: ProgressiveTargetLengthOptions = {}) {
+export function useAdaptiveTargetLength(options: AdaptiveTargetLengthOptions = {}) {
   const {
     minLength = 1,
     maxLength = 3,
@@ -30,7 +30,7 @@ export function useProgressiveTargetLength(options: ProgressiveTargetLengthOptio
     wrongsToDecrease = 1,
   } = options;
 
-  const [state, setState] = useState<ProgressiveTargetLengthState>({
+  const [state, setState] = useState<AdaptiveTargetLengthState>({
     targetLength: minLength,
     difficultyLevel: 0,
     levelStreak: 0,

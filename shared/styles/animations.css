@@ -39,3 +39,11 @@
   /* --animate-float-slow: float-slow 6s ease-in-out infinite; */
   /* --animate-levitate: levitate 5s ease-in-out infinite; */
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .motion-safe\:animate-float {
+    animation: none !important;
+    transform: none !important;
+  }
+}

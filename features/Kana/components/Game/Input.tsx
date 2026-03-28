@@ -15,7 +15,7 @@ import { getGlobalAdaptiveSelector } from '@/shared/lib/adaptiveSelection';
 import { GameBottomBar } from '@/shared/components/Game/GameBottomBar';
 import { isKanaInputAnswerCorrect } from '@/features/Kana/lib/isKanaInputAnswerCorrect';
 import useClassicSessionStore from '@/shared/store/useClassicSessionStore';
-import { useProgressiveTargetLength } from '@/shared/hooks/game/useProgressiveTargetLength';
+import { useAdaptiveTargetLength } from '@/shared/hooks/game/useAdaptiveTargetLength';
 
 // Get the global adaptive selector for weighted character selection
 const adaptiveSelector = getGlobalAdaptiveSelector();
@@ -86,7 +86,7 @@ const InputGame = ({ isHidden, isReverse = false }: InputGameProps) => {
     targetLength,
     recordCorrect: recordTargetLengthCorrect,
     recordWrong: recordTargetLengthWrong,
-  } = useProgressiveTargetLength({
+  } = useAdaptiveTargetLength({
     minLength: 1,
     maxLength: 3,
     correctsPerLevel: 3,

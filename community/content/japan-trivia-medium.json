@@ -310,5 +310,27 @@
     "Shodo"
   ],
   "correctIndex": 1
+},
+  {
+  "question": "Which of these is a Japanese traditional storytelling art? (Community variation 20)",
+  "difficulty": "medium",
+  "answers": [
+    "Rakugo",
+    "Kabuki",
+    "Noh",
+    "Ikebana"
+  ],
+  "correctIndex": 0
+},
+  {
+  "question": "What is the Japanese term for new year?",
+  "difficulty": "medium",
+  "answers": [
+    "Shogatsu",
+    "Obon",
+    "Tanabata",
+    "Hinamatsuri"
+  ],
+  "correctIndex": 0
 }
 ]

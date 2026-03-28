@@ -13,6 +13,7 @@ import {
   Heart,
   Sparkle,
   FileDiff,
+  CircleHelp,
 } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -39,7 +40,7 @@ const MainMenu = () => {
       'border-b-8 border-(--secondary-color-accent) group-hover:border-(--main-color-accent)',
       'transition-all duration-200',
       'active:border-b-0 active:translate-y-[6px] active:mb-[6px]',
-      'animate-float',
+      'motion-safe:animate-float',
       delay,
       `[--float-distance:${floatDistance}]`,
     );
@@ -101,6 +102,7 @@ const MainMenu = () => {
     { name: 'security', href: '/security', icon: FileLock2 },
     { name: 'patch notes', href: '/patch-notes', icon: FileDiff },
     { name: 'credits', href: '/credits', icon: Sparkle },
+    { name: 'about', href: '/about', icon: CircleHelp },
   ];
 
   const mobileLabelInset = 'pl-[max(30%,calc(50%-5.5rem))]';

@@ -525,24 +525,73 @@
     "character": "Thorfinn"
   },
   { 
-  "japanese": "貴様ッ！見ているなッ！！", 
-  "romaji": "Kisama! Mite iru na!!", 
-  "english": "You! You're watching me! (alt wording 11)", 
-  "anime": "JoJo's Bizarre Adventure: Stone Ocean", 
-  "character": "Jolyne Cujoh" 
-},
+    "japanese": "貴様ッ！見ているなッ！！", 
+    "romaji": "Kisama! Mite iru na!!", 
+    "english": "You! You're watching me! (alt wording 11)", 
+    "anime": "JoJo's Bizarre Adventure: Stone Ocean", 
+    "character": "Jolyne Cujoh" 
+  },
   {
-  "japanese": "計画通り",
-  "romaji": "Keikaku doori",
-  "english": "Just as planned.",
-  "anime": "Death Note",
-  "character": "Light Yagami"
-},
+    "japanese": "計画通り",
+    "romaji": "Keikaku doori",
+    "english": "Just as planned.",
+    "anime": "Death Note",
+    "character": "Light Yagami"
+  },
   {
-  "japanese": "レロレロレロレロ",
-  "romaji": "Rero rero rero rero",
-  "english": "Lero lero lero lero. (alt wording 27)",
-  "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
-  "character": "Noriaki Kakyoin"
+    "japanese": "レロレロレロレロ",
+    "romaji": "Rero rero rero rero",
+    "english": "Lero lero lero lero. (alt wording 27)",
+    "anime": "JoJo's Bizarre Adventure: Stardust Crusaders",
+    "character": "Noriaki Kakyoin"
+  },
+  {
+    "japanese": "俺は海賊王になる！",
+    "romaji": "Ore wa kaizoku ou ni naru!",
+    "english": "I'm gonna be King of the Pirates!",
+    "anime": "One Piece",
+    "character": "Monkey D. Luffy"
+  },
+  {
+    "japanese": "どこにいたって、人は繋がっているのよ",
+    "romaji": "Doko ni itatte, hito wa tsunagatte iru no yo.",
+    "english": "No matter where you go, everyone's connected.",
+    "anime": "Serial Experiments Lain",
+    "character": "Lain"
+  },
+  {
+  "japanese": "諦めないってばよ!",
+  "romaji": "Akiramenai tte bayo!",
+  "english": "I never give up, believe it! (alt wording 33)",
+  "anime": "Naruto",
+  "character": "Naruto Uzumaki"
+  },
+  {
+    "japanese": "奇跡は諦めない奴の頭上に降ってくるんだよ",
+    "romaji": "Kiseki wa akiramenai yatsu no zujō ni futte kurun da yo",
+    "english": "Miracles rain down on the heads of those who never give up!",
+    "anime": "Tengen Toppa Gurren Lagann",
+    "character": "Kamina"
+  },
+  {
+    "japanese": "生殺与奪の権を他人に握らせるな!",
+    "romaji": "Seisatsu yodatsu no ken o tanin ni nigiraseru na!",
+    "english": "Don't let anyone else take control of your life and death! (alt wording 37)",
+    "anime": "Demon Slayer: Kimetsu no Yaiba",
+    "character": "Tanjiro Kamado"
+  },
+  {
+  "japanese": "生殺与奪の権を他人に握らせるな!",
+  "romaji": "Seisatsu yodatsu no ken o tanin ni nigiraseru na!",
+  "english": "Don't let anyone else take control of your life and death!",
+  "anime": "Demon Slayer: Kimetsu no Yaiba",
+  "character": "Tanjiro Kamado"
+  },
+  {
+  "japanese": "あきらめたらそこで試合終了ですよ…？",
+  "romaji": "Akirametara soko de shiai shuuryou desu yo...?",
+  "english": "If you give up, that's the end of the game.",
+  "anime": "Slam Dunk",
+  "character": "Kaede Rukawa"
 }
 ]

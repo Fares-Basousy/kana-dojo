@@ -17,7 +17,7 @@ interface PageProps {
 
 const metadataConfig = {
   pathname: '/translate/english-to-japanese',
-  title: 'English to Japanese Translator Online',
+  title: 'English to Japanese Translator | with Romaji Support | KanaDojo',
   description:
     'Translate English to Japanese online for free. Get Japanese output, romaji support, and practical guidance for travel phrases, messages, and study examples.',
   keywords: [
@@ -27,7 +27,7 @@ const metadataConfig = {
     'english to japanese with romaji',
     'free english to japanese translator',
   ],
-  schemaName: 'English to Japanese Translator Online',
+  schemaName: 'English to Japanese Translator',
   breadcrumbName: 'English to Japanese',
 };
 
@@ -78,7 +78,7 @@ export default async function EnglishToJapanesePage(_: PageProps) {
       />
       <main className='mx-auto max-w-4xl px-4 py-10'>
         <h1 className='text-3xl font-bold text-(--main-color)'>
-          English to Japanese Translator Online
+          English → Japanese
         </h1>
         <p className='mt-4 text-(--secondary-color)'>
           Use this page when your goal is to produce Japanese text from English.

@@ -21,7 +21,11 @@ import CustomWallpaperUpload from './CustomWallpaperUpload';
 
 const random = new Random();
 
-const Themes = () => {
+type ThemesProps = {
+  useNewIconDesign?: boolean;
+};
+
+const Themes = ({ useNewIconDesign = false }: ThemesProps) => {
   const { playClick } = useClick();
   const { playLongLoop, stopLongLoop } = useLong();
   const {
@@ -180,6 +184,7 @@ const Themes = () => {
             )
           }
           icon={createElement(themeSet.icon, { size: 18 })}
+          useNewIconDesign={useNewIconDesign}
           level='subsubsection'
           defaultOpen={true}
           storageKey={`prefs-theme-group-${themeSet.name.toLowerCase()}`}
