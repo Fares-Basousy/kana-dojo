@@ -402,11 +402,22 @@
     "Sayonara"
   ],
   "correctIndex": 1
-},
-{
-  "question": "What is the name of Japan’s national public broadcaster?",
+  },
+  {
+    "question": "What is the name of Japan’s national public broadcaster?",
+    "difficulty": "medium",
+    "answers": ["NHK", "NHK World Japan", "Asahi", "Fuji TV"],
+    "correctIndex": 0
+  },
+  {
+  "question": "Which Japanese food is a savory pancake cooked on a griddle? (Community variation 39)",
   "difficulty": "medium",
-  "answers": ["NHK", "NHK World Japan", "Asahi", "Fuji TV"],
+  "answers": [
+    "Okonomiyaki",
+    "Sashimi",
+    "Onigiri",
+    "Mochi"
+  ],
   "correctIndex": 0
-}
+  }
 ]
