@@ -270,15 +270,39 @@
     "secondaryColor": "oklch(68.0% 0.075 260.0 / 1)"
   },
   {
-    "id": "pachinko-hall",
-    "backgroundColor": "oklch(18.0% 0.042 325.0 / 1)",
-    "mainColor": "oklch(90.0% 0.115 95.0 / 1)",
-    "secondaryColor": "oklch(75.0% 0.195 340.0 / 1)"
+    "id": "jpop-energy",
+    "backgroundColor": "oklch(15.0% 0.055 310.0 / 1)",
+    "mainColor": "oklch(80.0% 0.210 345.0 / 1)",
+    "secondaryColor": "oklch(85.0% 0.175 180.0 / 1)"
   },
   {
-    "id": "castle-gate",
-    "backgroundColor": "oklch(23.0% 0.018 75.0 / 1)",
-    "mainColor": "oklch(70.0% 0.055 80.0 / 1)",
-    "secondaryColor": "oklch(60.0% 0.145 25.0 / 1)"
+    "id": "shibuya-nights",
+    "backgroundColor": "oklch(12.0% 0.045 290.0 / 1)",
+    "mainColor": "oklch(78.0% 0.225 330.0 / 1)",
+    "secondaryColor": "oklch(82.0% 0.180 200.0 / 1)"
+  },
+  {
+    "id": "festival-yatai",
+    "backgroundColor": "oklch(19.0% 0.030 35.0 / 1)",
+    "mainColor": "oklch(78.0% 0.185 45.0 / 1)",
+    "secondaryColor": "oklch(88.0% 0.115 95.0 / 1)"
+  },
+  {
+    "id": "robot-anime",
+    "backgroundColor": "oklch(16.0% 0.055 270.0 / 1)",
+    "mainColor": "oklch(72.0% 0.195 220.0 / 1)",
+    "secondaryColor": "oklch(68.0% 0.205 30.0 / 1)"
+  },
+  {
+    "id": "rice-field-gold",
+    "backgroundColor": "oklch(24.0% 0.045 80.0 / 1)",
+    "mainColor": "oklch(85.0% 0.155 90.0 / 1)",
+    "secondaryColor": "oklch(70.0% 0.120 95.0 / 1)"
+  },
+  {
+    "id": "mountain-onsen",
+    "backgroundColor": "oklch(20.0% 0.018 210.0 / 1)",
+    "mainColor": "oklch(80.0% 0.085 200.0 / 1)",
+    "secondaryColor": "oklch(68.0% 0.105 160.0 / 1)"
   }
 ]

@@ -657,5 +657,38 @@
        "Ringgit"
      ],
   "correctIndex": 0
-  }
+  },
+    {
+  "question": "Which Japanese island is home to the city of Sapporo? (Community variation 5)",
+  "difficulty": "easy",
+  "answers": [
+    "Honshu",
+    "Hokkaido",
+    "Shikoku",
+    "Kyushu"
+  ],
+  "correctIndex": 1
+},
+    {
+  "question": "Which city is known for its beef brand Kobe? (Community variation 59)",
+  "difficulty": "easy",
+  "answers": [
+    "Kobe",
+    "Nagoya",
+    "Kanazawa",
+    "Hiroshima"
+  ],
+  "correctIndex": 0
+},
+    {
+  "question": "Which city is famous for the Peace Memorial Park?",
+  "difficulty": "easy",
+  "answers": [
+    "Hiroshima",
+    "Osaka",
+    "Tokyo",
+    "Fukuoka"
+  ],
+  "correctIndex": 0
+}
 ]
