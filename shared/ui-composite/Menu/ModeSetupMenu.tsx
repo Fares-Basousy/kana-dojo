@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { useKanaSelection } from '@/features/Kana';
 import { useKanjiSelection } from '@/features/Kanji';
 import { useVocabSelection } from '@/features/Vocabulary';
@@ -26,6 +26,9 @@ import {
 } from '@/shared/ui-composite/Gauntlet/types';
 
 import { ActionButton } from '@/shared/ui/components/ActionButton';
+
+const Decorations = lazy(() => import('@/shared/ui-composite/Decorations/Decorations'));
+const USE_DECORATIONS_BACKGROUND = true;
 
 interface ModeSetupMenuProps {
   isOpen: boolean;
@@ -235,7 +238,19 @@ const ModeSetupMenu = ({
   if (!isOpen) return null;
 
   return (
-    <div className='fixed inset-0 z-[70] bg-(--background-color)'>
+    <div className='fixed inset-0 z-[70]'>
+      {USE_DECORATIONS_BACKGROUND ? (
+        <>
+          <div className='absolute inset-0 -z-20 bg-(--background-color)' />
+          <div className='absolute inset-0 -z-10'>
+            <Suspense fallback={<></>}>
+              <Decorations expandDecorations={false} />
+            </Suspense>
+          </div>
+        </>
+      ) : (
+        <div className='absolute inset-0 bg-(--background-color)' />
+      )}
       <div className='h-full w-full overflow-x-hidden overflow-y-auto overscroll-y-contain'>
         <div className='mx-auto flex min-h-[100dvh] w-full max-w-lg flex-col justify-center p-4'>
           <div className='w-full space-y-4'>

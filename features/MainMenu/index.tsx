@@ -24,7 +24,7 @@ import { useThemePreferences } from '@/features/Preferences';
 import useDecorationsStore from '@/shared/store/useDecorationsStore';
 import { useMediaQuery } from 'react-responsive';
 
-const Decorations = lazy(() => import('./Decorations'));
+const Decorations = lazy(() => import('@/shared/ui-composite/Decorations/Decorations'));
 
 const MainMenu = () => {
   const [isMounted, setIsMounted] = useState(false);
