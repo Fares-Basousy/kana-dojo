@@ -536,6 +536,16 @@
     "Chankonabe"
   ],
   "correctIndex": 0
-}
-  
+},
+{
+  "question": "What is the name of the traditional Japanese garment often worn at festivals? (Community variation 13)",
+  "difficulty": "medium",
+  "answers": [
+    "Yukata",
+    "Haori",
+    "Hakama",
+    "Tabi"
+  ],
+  "correctIndex": 0
+} 
 ]
